@@ -1,0 +1,20 @@
+defaults: &defaults
+  #プロファイラの表示有無
+  display_profiler: false
+
+  #サービス提供時間
+  service_start_time: 8
+  service_end_time: 21
+
+development:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+

@@ -1,0 +1,20 @@
+bundle install
+bundle exec rake db:migrate RAILS_ENV=production
+RAILS_ENV=production bundle exec rake assets:precompile
+sudo mkdir -p tmp
+sudo mkdir -p tmp/pids
+sudo mkdir -p tmp/sockets
+sudo chgrp -R nginx /var/www
+sudo chmod -R 777 /var/www
+./clear_crontab
+./update_crontab
+rvm alias create base_app ruby-2.0.0-p247
+rvm wrapper base_app --no-links unicorn
+sudo cp config/base_app /etc/init.d/
+sudo chmod +w /etc/init.d/base_app
+sudo mkdir -p /etc/unicorn/
+sudo cp config/base_app.conf /etc/unicorn/
+sudo /sbin/chkconfig --add base_app
+sudo /sbin/chkconfig base_app on
+sudo cp config/base_app_logrotate /etc/logrotate.d/
+#sudo /usr/sbin/logrotate  /etc/logrotate.d/base_app_logrotate

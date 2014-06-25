@@ -1,0 +1,22 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <%= link_to "#{APP_TITLE}", '/common', :class => "brand" %>
+      <% if user_signed_in? %>
+        <div class="container-fluid nav-collapse">
+          <ul class="nav">
+            <li><%= link_to "パスワードの変更", edit_user_registration_path %></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, :method => 'get', data: { confirm: "ログアウトしますか？"} %></li>
+          </ul>
+          <span class="offset4 header-font">
+            ログイン中:<%= current_user.user_id %>
+          </span>
+        </div><!--/.nav-collapse -->
+      <% end %>
+    </div>
+  </div>
+</div>

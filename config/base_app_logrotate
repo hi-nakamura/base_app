@@ -1,0 +1,13 @@
+/var/www/base_app/log/*.log {
+        daily
+        missingok
+        rotate 5
+        dateext
+        compress
+        delaycompress
+        notifempty
+        lastaction
+          pid=/var/www/base_app/tmp/pids/unicorn.pid
+          test -s $pid && kill -USR1 "$(cat $pid)"
+        endscript
+}

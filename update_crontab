@@ -1,0 +1,1 @@
+bundle exec whenever --update-crontab /var/www/base_app
