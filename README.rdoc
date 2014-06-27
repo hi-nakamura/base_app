@@ -2,32 +2,33 @@
 
 設定ファイル等をまとめたRailsアプリのベース環境です。
 
-== ポイント
+=== ポイント
 * deviceによるログイン認証
 * mysql使用
 * Session情報のDB保存
 * Rubocopによる静的解析
 * ログファイルのローテション
 * Twitter Bootstrap使用
+* BDDスタイルのテストコード
 * nginx/unicorn用シェル
 * profiler表示
 * 開発で良く使うGemを追加(settingslogic/better_errors/kaminari/...)
 
-== 動作確認
-* OS:CentOS6.4
-* ruby:2.0.0p247  
-* Rails:4.0.0  
-
-== デプロイ/実行手順
+=== デプロイ/実行手順
  cd var/www/base_app
  ./prepare_deploy
  sudo /sbin/service nginx start
  sudo /sbin/service base_app start
 
-== rubocop実行
+=== rubocop実行
  cd var/www/base_app
  rubocop
 
-== 注意点
+=== 動作確認
+* OS:CentOS6.4
+* ruby:2.0.0p247  
+* Rails:4.0.0  
+
+=== 注意点
 * アプリ名やデータベース名は「BaseApp」、「base_app」となっています
 * ユーザ名はvagrantにしています
